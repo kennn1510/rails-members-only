@@ -1,3 +1,4 @@
+<%= @post.errors.full_messages %>
 <p>Current user: <%= current_user.email %></p>
 <%= form_with model: @post do |form| %>
   <%= form.label :body %>
