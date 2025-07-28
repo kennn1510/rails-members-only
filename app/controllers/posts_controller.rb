@@ -6,12 +6,12 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = current_user.posts.build(post_params)
+    @post = Post.new(post_params)
 
     if @post.save
       redirect_to posts_path, notice: "Post was successfully created."
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -20,8 +20,7 @@ class PostsController < ApplicationController
   end
 
   private
-
   def post_params
-    params.require(:post).permit(:body)
+    params.expect(post: [ :body ])
   end
 end

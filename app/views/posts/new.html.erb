@@ -1,4 +1,6 @@
-<%= form_with do |form| %>
-  <%= form.text_field :body %>
-  <%= form.submit "Submit" %>
+<p>Current user: <%= current_user.email %></p>
+<%= form_with model: @post do |form| %>
+  <%= form.label :body %>
+  <%= form.text_area :body %>
+  <%= form.submit %>
 <% end %>
