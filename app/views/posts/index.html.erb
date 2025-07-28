@@ -2,5 +2,8 @@
 <ul>
   <% @posts.each do |post| %>
     <li><%= post.body %></li>
+    <% if user_signed_in? %>
+      <p>Author: <%= post.user.email %></p>
+    <% end %>
   <% end %>
 </ul>
